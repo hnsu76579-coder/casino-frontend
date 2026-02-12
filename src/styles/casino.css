@@ -429,7 +429,7 @@ input[type="checkbox"] {
 
 /* ---- Admin access floating button ---- */
 .admin-access-btn {
-  position: fixed;
+  position: absolute;
   top: 1.25rem;
   right: 1.25rem;
   padding: 0.6rem 1.25rem;
@@ -685,3 +685,4 @@ input[type="checkbox"] {
     margin-top: 60px;
   }
 }
+
