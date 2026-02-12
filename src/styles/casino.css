@@ -641,7 +641,7 @@ input[type="checkbox"] {
 
 .history-date {
   /* border-bottom: 1px solid rgba(212,175,55,0.4); */
-  padding-bottom: 6px;
+  padding-bottom: 2px;
   margin-bottom: 10px;
 }
 
@@ -686,5 +686,6 @@ input[type="checkbox"] {
     margin-top: 60px;
   }
 }
+
 
 
