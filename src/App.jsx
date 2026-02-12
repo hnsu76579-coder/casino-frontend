@@ -10,6 +10,7 @@ import "./styles/casino.css";
 import { useEffect } from "react";
 import { connectSocket } from "./websocket/socket";
 import SlotHistory from "./pages/SlotHistory";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   useEffect(() => {
@@ -17,6 +18,7 @@ function App() {
   }, []);
   return (
     <BrowserRouter>
+       <ScrollToTop/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/slot/:id" element={<SlotDetails />} />
