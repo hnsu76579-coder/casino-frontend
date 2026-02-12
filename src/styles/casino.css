@@ -675,3 +675,13 @@ input[type="checkbox"] {
   background: linear-gradient(135deg, #d4af37, #b8962e);
   color: #2b0000;
 }
+@media (max-width: 500px) {
+  #root {
+    padding: 1rem;
+    font-size: 10px;
+    
+  }
+  .live-datetime{
+    margin-top: 60px;
+  }
+}
