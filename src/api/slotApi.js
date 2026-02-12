@@ -6,8 +6,9 @@ export const getAllSlots = () => axios.get(API);
 
 export const getSlotById = (id) => axios.get(`${API}/${id}`);
 
-export const getSlotHistory = (slotId, page = 0) => {
+export const getSlotHistory = (slotId) => {
   return axios.get(
-    `${API}/${slotId}/history?page=${page}`
+    `${API}/${slotId}/history`
   );
 };
+
