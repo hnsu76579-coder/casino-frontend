@@ -4,7 +4,7 @@ import { getSlotById } from "../api/slotApi";
 import { connectSocket } from "../websocket/socket";
 import { to12Hour } from "../utils/time";
 import { addSlotListener } from "../websocket/socket";
-
+import { addResetListener } from "../websocket/socket";
 const SlotDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -18,6 +18,10 @@ const SlotDetail = () => {
         setSlot((prev) => ({ ...prev, ...updatedSlot }));
       }
     });
+    addResetListener(() => {
+  getSlotById(id).then((res) => setSlot(res.data.data));
+});
+
   }, [id]);
 
   if (!slot) return <div>Loading...</div>;
@@ -54,3 +58,4 @@ const SlotDetail = () => {
 };
 
 export default SlotDetail;
+
