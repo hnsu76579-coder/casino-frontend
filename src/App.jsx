@@ -15,6 +15,21 @@ import  MaintenancePage from "./components/MaintenancePage";
 import { connectSocket } from "./websocket/socket";
 import "./styles/casino.css";
 
+// 🔥 HARD CODE HERE
+const MAINTENANCE_MODE = true;
+
+function App() {
+  useEffect(() => {
+    if (!MAINTENANCE_MODE) {
+      connectSocket(); // connect only when live
+    }
+  }, []);
+
+  // 🚨 SHOW MAINTENANCE PAGE FIRST
+  if (MAINTENANCE_MODE) {
+    return <MaintenancePage />;
+  }
+
   return (
     <BrowserRouter>
       <ScrollToTop />
