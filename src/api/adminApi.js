@@ -19,3 +19,8 @@ export const changePassword = (data) =>
 // 👤 Change username
 export const changeUsername = (data) =>
   api.put("/api/admin/account/change-username", data);
+
+//reset request
+export const resetAllSlots = () => {
+  return axios.post("/api/admin/slots/reset-all");
+};
