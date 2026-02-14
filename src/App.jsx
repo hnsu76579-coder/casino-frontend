@@ -1,27 +1,42 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+
 import Home from "./pages/Home";
 import AdminLogin from "./pages/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard";
 import SlotDetails from "./pages/SlotDetails";
 import ChangePassword from "./pages/ChangePassword";
 import ChangeUsername from "./pages/ChangeUsername";
-import AdminRoute from "./components/AdminRoute";
-import "./styles/casino.css";
-import { useEffect } from "react";
-import { connectSocket } from "./websocket/socket";
 import SlotHistory from "./pages/SlotHistory";
+import AdminRoute from "./components/AdminRoute";
 import ScrollToTop from "./components/ScrollToTop";
+import  MaintenancePage from "./components/MaintenancePage";
+
+import { connectSocket } from "./websocket/socket";
+import "./styles/casino.css";
+
+// 🔥 HARD CODE HERE
+const MAINTENANCE_MODE = true;
 
 function App() {
   useEffect(() => {
-    connectSocket(); // 🔥 CONNECT ON APP LOAD
+    if (!MAINTENANCE_MODE) {
+      connectSocket(); // connect only when live
+    }
   }, []);
+
+  // 🚨 SHOW MAINTENANCE PAGE FIRST
+  if (MAINTENANCE_MODE) {
+    return <MaintenancePage />;
+  }
+
   return (
     <BrowserRouter>
-       <ScrollToTop/>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/slot/:id" element={<SlotDetails />} />
+        <Route path="/slot/:id/history" element={<SlotHistory />} />
 
         <Route path="/admin/login" element={<AdminLogin />} />
 
@@ -33,7 +48,6 @@ function App() {
             </AdminRoute>
           }
         />
-        <Route path="/slot/:id/history" element={<SlotHistory />} />
 
         <Route
           path="/admin/change-password"
