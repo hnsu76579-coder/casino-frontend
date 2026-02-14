@@ -62,18 +62,23 @@ const AdminDashboard = () => {
     setEditSlot(null);
   };
 
-   //handle reset function
-  const handleResetAll = async () => {
+ //handle reset function
+ const handleResetAll = async () => {
+  console.log("Reset button clicked");
+
   const confirmReset = window.confirm(
-    "Are you sure you want to reset ALL slots to No Number Selected?"
+    "Are you sure you want to reset ALL slots?"
   );
 
   if (!confirmReset) return;
 
   try {
+    console.log("Calling API...");
     await resetAllSlots();
+    console.log("API called");
     alert("All slots reset successfully.");
   } catch (err) {
+    console.error(err);
     alert("Reset failed.");
   }
 };
@@ -148,5 +153,6 @@ const AdminDashboard = () => {
 };
 
 export default AdminDashboard;
+
 
 
