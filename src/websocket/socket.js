@@ -20,3 +20,8 @@ export const connectSocket = () => {
 export const addSlotListener = (cb) => {
   listeners.push(cb);
 };
+export const addResetListener = (callback) => {
+  socket.on("reset-all", callback);
+};
+
+
