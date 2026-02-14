@@ -22,5 +22,6 @@ export const changeUsername = (data) =>
 
 //reset request
 export const resetAllSlots = () => {
-  return axios.post("/api/admin/slots/reset-all");
+  return api.post("/api/admin/slots/reset-all");
 };
+
