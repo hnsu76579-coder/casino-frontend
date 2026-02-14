@@ -6,6 +6,7 @@ import { addSlotListener } from "../websocket/socket";
 import SlotGrid from "../components/SlotGrid";
 import AdminAccess from "../components/AdminAccess";
 import LiveDateTime from "../components/LiveDateTime";
+import { addResetListener } from "../websocket/socket";
 
 const Home = () => {
   const queryClient = useQueryClient();
@@ -36,6 +37,9 @@ const Home = () => {
         return newSlots; // order preserved
       });
     });
+     addResetListener(() => {
+      queryClient.invalidateQueries(["slots"]);
+    });
   }, [queryClient]);
 
   return (
@@ -58,3 +62,4 @@ const Home = () => {
 };
 
 export default Home;
+
