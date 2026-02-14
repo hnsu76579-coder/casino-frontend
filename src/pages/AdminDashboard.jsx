@@ -10,7 +10,7 @@ import AdminHeader from "../components/AdminHeader";
 import NumberModal from "../components/NumberModal";
 import EditSlotModal from "../components/EditSlotModal";
 import { addResetListener } from "../websocket/socket";
-
+import { resetAllSlots } from "../api/adminApi";
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -62,6 +62,22 @@ const AdminDashboard = () => {
     setEditSlot(null);
   };
 
+   //handle reset function
+  const handleResetAll = async () => {
+  const confirmReset = window.confirm(
+    "Are you sure you want to reset ALL slots to No Number Selected?"
+  );
+
+  if (!confirmReset) return;
+
+  try {
+    await resetAllSlots();
+    alert("All slots reset successfully.");
+  } catch (err) {
+    alert("Reset failed.");
+  }
+};
+
   return (
     <>
       <AdminHeader />
@@ -102,6 +118,9 @@ const AdminDashboard = () => {
             <button onClick={() => navigate("/admin/change-username")}>
               Change Username
             </button>
+             <button onClick={handleResetAll}>
+                Reset All Slots 
+            </button>
           </div>
         </div>
 
@@ -129,4 +148,5 @@ const AdminDashboard = () => {
 };
 
 export default AdminDashboard;
+
 
