@@ -9,6 +9,8 @@ import { connectSocket } from "../websocket/socket";
 import AdminHeader from "../components/AdminHeader";
 import NumberModal from "../components/NumberModal";
 import EditSlotModal from "../components/EditSlotModal";
+import { addResetListener } from "../websocket/socket";
+
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -28,6 +30,10 @@ const AdminDashboard = () => {
         )
       );
     });
+    addResetListener(() => {
+  getAllSlots().then((res) => setSlots(res.data.data));
+});
+
   }, []);
 
   // 🔢 Save slot number
@@ -123,3 +129,4 @@ const AdminDashboard = () => {
 };
 
 export default AdminDashboard;
+
