@@ -16,7 +16,7 @@ import { connectSocket } from "./websocket/socket";
 import "./styles/casino.css";
 
 // 🔥 HARD CODE HERE
-const MAINTENANCE_MODE = false;
+const MAINTENANCE_MODE = true;
 
 function App() {
   useEffect(() => {
